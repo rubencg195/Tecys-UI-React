@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 
 import RaisedButton from 'material-ui/RaisedButton';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
@@ -14,7 +14,8 @@ import {
   TableRowColumn,
 } from 'material-ui/Table';
 
-import {black500, blue500} from 'material-ui/styles/colors';
+
+import {black500, blue500, lightGreen500} from 'material-ui/styles/colors';
 const styles = {
   errorStyle: {
     color: black500,
@@ -24,78 +25,60 @@ const styles = {
   },
   floatingLabelStyle: {
     color: black500,
+    fontSize: 21,
   },
   floatingLabelFocusStyle: {
     color: blue500,
   },
+  BtnStyle : {
+    margin: 12,
+  },
 };
-const CardForm = () => (
-  <Card style={{margin:'20'}} zDepth={3}>
-    <CardTitle title="Card title" subtitle="Card subtitle" />
-    <CardHeader
-      /*title="Without Avatar"
-      subtitle="Subtitle"
-      */
-      actAsExpander={true}
-      showExpandableButton={true}
-    />
-    <CardText>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-      <Row style={{margin:"10"}}>
-        <Col xs={12} md={6}>
-          <TextField
-            floatingLabelText="Region"
-            floatingLabelStyle={styles.floatingLabelStyle}
-            floatingLabelFocusStyle={styles.floatingLabelFocusStyle}
-          />
-        </Col>
-        <Col xs={12} md={6}>
-          <TextField
-            floatingLabelText="Medio De Transporte"
-            floatingLabelStyle={styles.floatingLabelStyle}
-            floatingLabelFocusStyle={styles.floatingLabelFocusStyle}
-          />
-        </Col>
+class CardForm extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      open: false,
+    };
+  }
+  render() {
+  var allQuestions = this.props.questions.map(function(q){
+        return (
+          <Col xs={12} md={4}>
+            <TextField
+              floatingLabelText={q}
+              floatingLabelStyle={styles.floatingLabelStyle}
+              floatingLabelFocusStyle={styles.floatingLabelFocusStyle}
+              floatingLabelFixed={true}
+            />
+          </Col>
+        );
+    });
+    return (
+      <Card style={{margin:'20'}} zDepth={3}>
+        <CardTitle title={this.props.title} subtitle= {this.props.subtitle}/>
+        <CardHeader
+          /*title="Without Avatar"
+          subtitle="Subtitle"
+          */
+          actAsExpander={true}
+          showExpandableButton={true}
+        />
+        <CardText expandable={false}>
+          {this.props.text}
+          <br/>
+          <Row style={{margin:"10"}}>
+            { allQuestions }
+          </Row>
+        </CardText>
 
-        <Col xs={12} md={6}>
-          <TextField
-            floatingLabelText="Agente Aduanero"
-            floatingLabelStyle={styles.floatingLabelStyle}
-            floatingLabelFocusStyle={styles.floatingLabelFocusStyle}
-          />
-        </Col>
-        <Col xs={12} md={6}>
-          <TextField
-            floatingLabelText="Bodega Fisica"
-            floatingLabelStyle={styles.floatingLabelStyle}
-            floatingLabelFocusStyle={styles.floatingLabelFocusStyle}
-          />
-        </Col>
-        <Col xs={12} md={6}>
-          <TextField
-            floatingLabelText="Dias de Retencion"
-            floatingLabelStyle={styles.floatingLabelStyle}
-            floatingLabelFocusStyle={styles.floatingLabelFocusStyle}
-          />
-        </Col>
-        <Col xs={12} md={6}>
-          <TextField
-            floatingLabelText="Gastos Administrativos"
-            floatingLabelStyle={styles.floatingLabelStyle}
-            floatingLabelFocusStyle={styles.floatingLabelFocusStyle}
-          />
-        </Col>
-
-
-      </Row>
-
-    </CardText>
-
-    <CardActions>
-      {/*<FlatButton label="Editar" />
-      <FlatButton label="Borrar" />*/}
-    </CardActions>
-  </Card>
-);
+        <CardActions>
+          <RaisedButton label="Agregar" primary={true} style={styles.BtnStyle} />
+          <RaisedButton label="Quitar" secondary={true} style={styles.BtnStyle} />
+        </CardActions>
+      </Card>
+    );
+  }
+}
 
 export default CardForm;

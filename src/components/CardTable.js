@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 
 import RaisedButton from 'material-ui/RaisedButton';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
@@ -24,89 +24,86 @@ const styles = {
   },
   floatingLabelStyle: {
     color: black500,
+    fontSize: 21,
   },
   floatingLabelFocusStyle: {
     color: blue500,
   },
+  BtnStyle : {
+    margin: 12,
+  },
 };
-const CardTable = () => (
-  <Card style={{margin:'20'}} zDepth={3}>
-    <CardTitle title="Card title" subtitle="Card subtitle" />
-    <CardHeader
-      /*title="Without Avatar"
-      subtitle="Subtitle"
-      */
-      actAsExpander={true}
-      showExpandableButton={true}
-    />
-    <CardText expandable={false}>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-      Donec mattis pretium massa. Aliquam erat volutpat. Nulla facilisi.
-      Donec vulputate interdum sollicitudin. Nunc lacinia auctor quam sed pellentesque.
-      Aliquam dui mauris, mattis quis lacus id, pellentesque lobortis odio.
+class CardTable extends Component {
+    constructor(props) {
+      super(props);
+      this.state = {
+        open: false,
+      };
+    }
+    render() {
+      var allQuestions = this.props.questions.map(function(q){
+           return (
+             <Col xs={12} md={4}>
+               <TextField
+                 floatingLabelText={q}
+                 floatingLabelStyle={styles.floatingLabelStyle}
+                 floatingLabelFocusStyle={styles.floatingLabelFocusStyle}
+                 floatingLabelFixed={true}
+               />
+             </Col>
+           );
+       });
+      return(
+        <Card style={{margin:'20'}} zDepth={3}>
+          <CardTitle title={this.props.title} subtitle={this.props.subtitle} />
+          <CardHeader
+            /*title="Without Avatar"
+            subtitle="Subtitle"
+            */
+            actAsExpander={true}
+            showExpandableButton={true}
+          />
+          <CardText expandable={false}>
+            {this.props.text}
 
-      <Row>
-        <Col xs={4} md={3}>
-          <TextField
-            floatingLabelText="Codigo"
-            floatingLabelStyle={styles.floatingLabelStyle}
-            floatingLabelFocusStyle={styles.floatingLabelFocusStyle}
-          />
-        </Col>
-        <Col xs={4} md={3}>
-          <TextField
-            floatingLabelText="Cantidad"
-            floatingLabelStyle={styles.floatingLabelStyle}
-            floatingLabelFocusStyle={styles.floatingLabelFocusStyle}
-          />
-        </Col>
-        <Col xs={4} md={3}>
-          <TextField
-            floatingLabelText="Volumen"
-            floatingLabelStyle={styles.floatingLabelStyle}
-            floatingLabelFocusStyle={styles.floatingLabelFocusStyle}
-          />
-        </Col>
-        <Col xs={4} md={3}>
-          <TextField
-            floatingLabelText="Select Unidad"
-            floatingLabelStyle={styles.floatingLabelStyle}
-            floatingLabelFocusStyle={styles.floatingLabelFocusStyle}
-          />
-        </Col>
-        <Col xs={4} md={3}>
-          <br/><br/>
-          <FlatButton label="Agregar" />
-        </Col>
-      </Row>
-    </CardText>
-    <Table>
-      <TableHeader>
-        <TableRow>
-          <TableHeaderColumn>ID</TableHeaderColumn>
-          <TableHeaderColumn>Name</TableHeaderColumn>
-          <TableHeaderColumn>Status</TableHeaderColumn>
-        </TableRow>
-      </TableHeader>
-      <TableBody>
-        <TableRow>
-          <TableRowColumn>1</TableRowColumn>
-          <TableRowColumn>John Smith</TableRowColumn>
-          <TableRowColumn>Employed</TableRowColumn>
-        </TableRow>
-        <TableRow>
-          <TableRowColumn>2</TableRowColumn>
-          <TableRowColumn>Randal White</TableRowColumn>
-          <TableRowColumn>Unemployed</TableRowColumn>
-        </TableRow>
-      </TableBody>
-    </Table>
+            <Row>
+              {allQuestions}
+            </Row>
 
-    <CardActions>
-      <FlatButton label="Editar" />
-      <FlatButton label="Borrar" />
-    </CardActions>
-  </Card>
-);
+            <CardActions>
+              <RaisedButton label="Agregar" primary={true} style={styles.BtnStyle} />
+              <RaisedButton label="Quitar" secondary={true} style={styles.BtnStyle} />
+            </CardActions>
+
+          </CardText>
+
+
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHeaderColumn>ID</TableHeaderColumn>
+                <TableHeaderColumn>Name</TableHeaderColumn>
+                <TableHeaderColumn>Status</TableHeaderColumn>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              <TableRow>
+                <TableRowColumn>1</TableRowColumn>
+                <TableRowColumn>John Smith</TableRowColumn>
+                <TableRowColumn>Employed</TableRowColumn>
+              </TableRow>
+              <TableRow>
+                <TableRowColumn>2</TableRowColumn>
+                <TableRowColumn>Randal White</TableRowColumn>
+                <TableRowColumn>Unemployed</TableRowColumn>
+              </TableRow>
+            </TableBody>
+          </Table>
+
+
+        </Card>
+    );
+  }
+}
 
 export default CardTable;

@@ -5,17 +5,17 @@ import CardForm from '../components/CardForm';
 
 import { Link } from 'react-router';
 
-class Home extends Component {
+class Region extends Component {
   constructor() {
       super();
       this.state = {
          firstForm:
          [
-            "Region", "Medio de Transporte", "Agente Aduanero", "Bodega Fiscal", "Dias de Retencion", "Gastos Administrativos"
+            "Proveedor", "Minimo", "Tarifa por CFT 111 a 950",  "Tarifa por CFT mas de 950"
          ],
          secondForm:
          [
-            "Codigo", "Cantidad", "Volumen", "Medida"
+            "Contenedor 20 STD", "Contenedor40 STD", "Contenedor40 HC", "Contenedor45 HC", "Contenedor 45 120"
          ],
          thirdForm:
          [
@@ -26,23 +26,17 @@ class Home extends Component {
   render() {
     return (
       <div>
-        <CardForm
-          title={"Configuraciones Principales"}
-          subtitle={"Ingrese los campos indicados"}
+        <CardTable
+          title={"TARIFAS LCL (Less Container Load) Consolidado Maritimo "}
+          subtitle={"Ingrese un los valores siguientes"}
           text=""
           questions={this.state.firstForm}
         />
         <CardTable
-          title={"Calculo de Importaciones"}
-          subtitle={"Ingrese un nuevo producto"}
+          title={"TARIFAS FCL (Full Container Load) Conte, Completo "}
+          subtitle={"Ingrese los valores siguintes"}
           text=""
           questions={this.state.secondForm}
-        />
-        <CardTable
-          title={"Otros Gastos"}
-          subtitle={"Ingrese un nuevo gasto"}
-          text=""
-          questions={this.state.thirdForm}
         />
       </div>
     );
@@ -50,4 +44,4 @@ class Home extends Component {
 }
 
 
-export default Home;
+export default Region;
