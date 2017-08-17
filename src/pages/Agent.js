@@ -11,15 +11,25 @@ class Agent extends Component {
       this.state = {
          firstForm:
          [
-            "Proveedor", "Minimo", "Tarifa por CFT 111 a 950",  "Tarifa por CFT mas de 950"
+            {type:"select", value: "Proveedor"},
+            {type:"text", value: "Minimo"},
+            {type:"text", value: "Tarifa por CFT 111 a 950"},
+            {type:"text", value: "Tarifa por CFT mas de 950"}
          ],
          secondForm:
          [
-            "Contenedor 20 STD", "Contenedor40 STD", "Contenedor40 HC", "Contenedor45 HC", "Contenedor 45 120"
+            {type:"text", value: "Contenedor 20 STD"},
+            {type:"text", value: "Contenedor40 STD"},
+            {type:"text", value: "Contenedor40 HC"},
+            {type:"text", value: "Contenedor45 HC"},
+            {type:"text", value: "Contenedor 45 120"}
          ],
          thirdForm:
          [
-            "Nombre", "Descripcion", "Cantidad", "Costo"
+            {type:"text", value: "Nombre"},
+            {type:"text", value: "Descripcion"},
+            {type:"text", value: "Cantidad"},
+            {type:"text", value: "Costo"}
          ],
       }
   }

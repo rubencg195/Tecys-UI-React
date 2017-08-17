@@ -16,8 +16,6 @@ import logo from './logo.svg';
 import './App.css';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { Route, Switch } from 'react-router-dom'
-var Datastore = require('nedb')
-  , db = new Datastore({ filename: './db', autoload: true });
 
 import Home from './pages/Home';
 import Sap from './pages/Sap';
@@ -26,7 +24,6 @@ import Agent from './pages/Agent';
 import Region from './pages/Region';
 import Warehouse from './pages/Warehouse';
 import Settings from './pages/Settings';
-
 
 
 const styles = {
@@ -40,18 +37,16 @@ function handleTouchTap() {
 }
 
 class App extends Component {
-  constructor(props) {
+  constructor(props){
       super(props);
 
-  }
-  state = {
-    showDrawer: true,
-    mainMarginLeft : 250,
+      this.state = {
+        showDrawer: true,
+        mainMarginLeft : 250,
+      };
   };
-
   toogleDrawer = (event, showDrawer) => {
     this.setState({ showDrawer: !this.state.showDrawer, mainMarginLeft : this.state.showDrawer ? 0 : 250,  });
-    console.log(this.state.mainMarginLeft);
   };
   render() {
 

@@ -42,20 +42,20 @@ class CardForm extends Component {
     };
   }
   render() {
-  var allQuestions = this.props.questions.map(function(q){
-        return (
-          <Col xs={12} md={4}>
-            <TextField
-              floatingLabelText={q}
-              floatingLabelStyle={styles.floatingLabelStyle}
-              floatingLabelFocusStyle={styles.floatingLabelFocusStyle}
-              floatingLabelFixed={true}
-            />
-          </Col>
-        );
-    });
+  // var allQuestions = this.props.questions.map(function(q){
+  //       return (
+  //         <Col xs={12} md={4}>
+  //           <TextField
+  //             floatingLabelText={q}
+  //             floatingLabelStyle={styles.floatingLabelStyle}
+  //             floatingLabelFocusStyle={styles.floatingLabelFocusStyle}
+  //             floatingLabelFixed={true}
+  //           />
+  //         </Col>
+  //       );
+  //   });
     return (
-      <Card style={{margin:'20'}} zDepth={3}>
+      <Card style={{margin:20}} zDepth={3}>
         <CardTitle title={this.props.title} subtitle= {this.props.subtitle}/>
         <CardHeader
           /*title="Without Avatar"
@@ -67,8 +67,8 @@ class CardForm extends Component {
         <CardText expandable={false}>
           {this.props.text}
           <br/>
-          <Row style={{margin:"10"}}>
-            { allQuestions }
+          <Row style={{margin:10}}>
+            {/* { allQuestions } */}
           </Row>
         </CardText>
 
