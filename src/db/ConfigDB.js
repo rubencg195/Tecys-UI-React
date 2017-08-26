@@ -39,9 +39,9 @@ var self = {
 
         // console.log(err, numReplaced, upsert);
         self.db.find({}, function (err, docs) {
-          console.log("questions ", docs, " Err ", err );
+          // console.log("questions ", docs, " Err ", err );
         });
-        console.log('finish');
+        // console.log('finish');
     });
   },
   addAgents : () => {

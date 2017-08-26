@@ -106,7 +106,7 @@ function getQuestions(self, db){
 
   });
 }
-class CardTable extends Component {
+class Form extends Component {
     constructor(props) {
       super(props);
       this.state = {
@@ -124,60 +124,20 @@ class CardTable extends Component {
     }
     render() {
       return(
-        <Card style={{margin:20}} zDepth={3}>
-          <CardTitle title={this.props.title} subtitle={this.props.subtitle} />
-          <CardHeader
-            /*title="Without Avatar"
-            subtitle="Subtitle"
-            */
-            actAsExpander={true}
-            showExpandableButton={true}
-          />
-          <CardText expandable={false}>
-            {this.props.text}
-          </CardText>
+        <Card style={{margin:20, padding:20}} zDepth={1}>
+          <h2>Inrese los valores</h2>
 
           <Row>
-            <Col xs={12} md={9}>
-              <Card style={{margin:20, padding:20}} zDepth={1}>
-                <Table>
-                  <TableHeader>
-                    <TableRow>
-                      {this.state.allColums}
-                    </TableRow>
-                  </TableHeader>
-                  <TableBody>
-                    <TableRow>
-                      <TableRowColumn>1</TableRowColumn>
-                      <TableRowColumn>John Smith</TableRowColumn>
-                      <TableRowColumn>Employed</TableRowColumn>
-                      <TableRowColumn>2</TableRowColumn>
-                      <TableRowColumn>Randal White</TableRowColumn>
-                      <TableRowColumn>Unemployed</TableRowColumn>
-                    </TableRow>
-                  </TableBody>
-                </Table>
-            </Card>
-            </Col>
-            <Col xs={12} md={3}>
-              <Card style={{margin:20, padding:20}} zDepth={1}>
-                <h2>Inrese los valores</h2>
-
-                <Row>
-                {this.state.allQuestions}
-                </Row>
-
-                <CardActions>
-                  <RaisedButton label="Agregar" primary={true} style={styles.BtnStyle} />
-                  <RaisedButton label="Quitar" secondary={true} style={styles.BtnStyle} />
-                </CardActions>
-             </Card>
-            </Col>
+          {this.state.allQuestions}
           </Row>
 
-        </Card>
+          <CardActions>
+            <RaisedButton label="Agregar" primary={true} style={styles.BtnStyle} />
+            <RaisedButton label="Quitar" secondary={true} style={styles.BtnStyle} />
+          </CardActions>
+       </Card>
     );
   }
 }
 
-export default CardTable;
+export default Form;
